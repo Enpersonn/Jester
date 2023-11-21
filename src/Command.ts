@@ -1,5 +1,10 @@
-import { CommandInteraction, ChatInputApplicationCommandData, Client } from "discord.js";
+import { Client, Message } from "discord.js"
 
-export interface Command extends ChatInputApplicationCommandData {
-    run: (client: Client, interaction: CommandInteraction) => void;
-} 
+
+type Command = {
+    name: string,
+    description: string,
+    run: (msg?: Message, client?: Client) => void
+}
+
+export default Command
