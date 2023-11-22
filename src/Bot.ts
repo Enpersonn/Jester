@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { Client, TextChannel, IntentsBitField } from "discord.js";
+import { Client, TextChannel, IntentsBitField, Message } from "discord.js";
 import CommandList from "./CmdList";
 dotenv.config();
 
@@ -16,19 +16,22 @@ const initialClient = new Client({
 });
 
 
-initialClient.on("ready", async (client) => {
+initialClient.on("ready", (client) => {
     console.log("Connected!", client.user?.displayName)
 
-    const testChat = (await client.channels.fetch("1176449660181811270")) as TextChannel;
+    const testChat = (client.channels.cache.get("1176449660181811270")) as TextChannel;
 
     testChat.send("Connected! " + client.user?.displayName)
 });
 
-initialClient.on("messageCreate", (msg,) => {
+initialClient.on("messageCreate", (message,) => {
+    if (!message.guild) return
+    const msg = message as Message<true>
     if (msg.author.bot) return;
     if (msg.content[0] === "!") {
         if (msg.author.id !== "531456312844877855") {
-            msg.channel.send(" Sorry under development i can only take commands from En Person")
+            msg.channel.send(" Sorry, under development i can only take commands from En Person")
+            return
         }
         const commandLine = msg.content.split("!")[1]
         const commandType = commandLine.split(" ")[0];

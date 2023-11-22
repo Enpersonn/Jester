@@ -1,7 +1,7 @@
 import { Client, Message } from "discord.js"
 
 
-export default function test(msg?: Message, client?: Client) {
+export default function test(msg?: Message<true>, client?: Client) {
     const command = msg?.content.split("!")[1]
     const optionalmsg = command?.split(" ")[1]
     if (optionalmsg === undefined) {
