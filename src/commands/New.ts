@@ -40,29 +40,22 @@ export default function newThing(msg?: Message<true>, client?: Client) {
         }
     }
 
-    const Create = new Creator(msg)
 
 
     try {
+        const Create = new Creator(msg)
 
-        switch (Type) {
 
-            case "empire":
-                Create.empire
-                break;
-            case "kingdom":
-                Create.kingdom
-                break;
-            case "town":
-                Create.town
-                break;
-            case "job":
-                Create.job
-                break;
-            case "guild":
-                Create.guild
-                break;
-
+        if (Type === "empire") {
+            Create.empire()
+        } else if (Type === "kingdom") {
+            Create.kingdom()
+        } else if (Type === "town") {
+            Create.town()
+        } else if (Type === "job") {
+            Create.job()
+        } else if (Type === "guild") {
+            Create.guild()
         }
 
     } catch (error) {

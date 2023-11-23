@@ -15,7 +15,7 @@ export default async function Kingdom(msg?: Message<true>) {
     const hasPermission = listOfRoles?.every(role => requiredSubstrings.some(substring => role.includes(substring)));
 
     if (!hasPermission) {
-        msg?.channel.send(`Sorry, But it looks like you have the right premisions to create a ${Type}`)
+        msg?.channel.send(`Sorry, But it looks like you don't have the right premisions to create a ${Type}`)
         return
     }
 
