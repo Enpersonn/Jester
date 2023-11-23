@@ -1,17 +1,18 @@
 import Command from "./Command"
-import newKingdom from "./commands/NewKingdom"
+import help from "./commands/Help"
+import newThing from "./commands/New"
 import test from "./commands/Test"
 
 const CommandList: Command[] = [
     {
-        name: "test",
-        description: "a test command",
-        run(msg, client) { test(msg, client) },
+        name: "help",
+        description: "Lists all commands",
+        run(msg, client) { help(msg, client) },
     },
     {
-        name: "newKingdom",
-        description: "create a test chat for a kingdom in an empire",
-        run(msg, client) { newKingdom(msg, client) },
+        name: "new",
+        description: "!new type name (NOTE if making a new town you need to add the kingdom of the town before name)\nType Refers to what you want to create it can be empire, kingdom, town, guild, job. depending on you rank what you can create may vary.",
+        run(msg, client) { newThing(msg, client) },
     }
 ]
 

@@ -3,7 +3,6 @@ import { Client, TextChannel, IntentsBitField, Message } from "discord.js";
 import CommandList from "./CmdList";
 dotenv.config();
 
-console.clear();
 
 const initialClient = new Client({
     intents: [
@@ -17,6 +16,8 @@ const initialClient = new Client({
 
 
 initialClient.on("ready", (client) => {
+    console.clear();
+
     console.log("Connected!", client.user?.displayName)
 
     const testChat = (client.channels.cache.get("1176449660181811270")) as TextChannel;
