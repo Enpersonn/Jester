@@ -17,6 +17,6 @@ export default async function help(msg?: Message<true>, client?: Client) {
     }))
 
 
-    msg?.channel.send(listOfCommands.map(x => `## !${x.name}: \n ${x.description}`).join("\n"))
+    msg?.channel.send(listOfCommands.map(x => `## !${x.name} \n ${x.description}`).join("\n"))
 
 }
