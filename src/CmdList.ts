@@ -1,13 +1,20 @@
 import Command from "./Command"
 import help from "./commands/Help"
 import newThing from "./commands/New"
-import test from "./commands/Test"
+import fuck from "./commands/fuck"
 
 const CommandList: Command[] = [
     {
         name: "help",
         description: "Lists all commands",
         run(msg, client) { help(msg, client) },
+    },
+    {
+        name: "fucku",
+        description: "Try it... i dear you",
+        run(msg, client) {
+            fuck(msg, client)
+        },
     },
     {
         name: "new",

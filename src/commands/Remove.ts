@@ -18,7 +18,7 @@ export default function newThing(msg?: Message<true>, client?: Client) {
     }
 
 
-    if (Type.toLowerCase() !== ("empire" || "guild" || "job") && !msg?.channel.parent?.name.toLowerCase().includes("empire")) {
+    if (Type.toLowerCase() !== "empire" && !msg?.channel.parent?.name.toLowerCase().includes("empire")) {
         msg?.channel.send(`I am sorry, but you need to be in the empire catagory you want the ${Type} to be in for this command to work`)
         return
     }

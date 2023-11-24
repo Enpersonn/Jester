@@ -2,7 +2,9 @@ import { Client, Message } from "discord.js"
 import CommandList from "../CmdList"
 
 
-export default function help(msg?: Message<true>, client?: Client) {
+export default async function help(msg?: Message<true>, client?: Client) {
+    await msg?.guild.members.fetch()
+
     const command = msg?.content.split("!")[1]
     const optionalmsg = command?.split(" ")[1]
 
@@ -15,6 +17,6 @@ export default function help(msg?: Message<true>, client?: Client) {
     }))
 
 
-    msg?.channel.send(listOfCommands.map(x => `## ${x.name}: \n ${x.description}`).join("\n"))
+    msg?.channel.send(listOfCommands.map(x => `## !${x.name}: \n ${x.description}`).join("\n"))
 
 }
