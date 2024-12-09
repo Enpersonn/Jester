@@ -1,4 +1,5 @@
-import { ChannelType, Message, Role, TextChannel } from "discord.js"
+import type { Message, Role, TextChannel } from "discord.js";
+import { ChannelType } from "discord.js";
 
 export default async function Town(msg?: Message<true>) {
     const server = msg?.guild
@@ -7,7 +8,7 @@ export default async function Town(msg?: Message<true>) {
     const Place = msg?.content.split(" ")[2]
     const Name = msg?.content.split(" ")[3]
 
-    if (Name == undefined) {
+    if (Name === undefined) {
         msg?.channel.send(`You need to define a name for your new ${Type}`)
         return
     }
@@ -32,15 +33,17 @@ export default async function Town(msg?: Message<true>) {
 
     let kingRole: Role | undefined;
 
-    roles?.forEach(role => {
+    for (const role of roles ?? []) {
         if (role.name.toLowerCase().includes(Place.toLowerCase()) && role.name.toLowerCase().includes("king")) {
             kingRole = role;
+            break;
         }
-    });
+    }
 
     if (!kingRole) {
         msg?.channel.send(`Sorry, but I couldn't find the appropriate king role.`);
         return;
+    }
     }
     const kRole = kingRole
 
